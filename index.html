@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adult Income Prediction</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Segoe UI,sans-serif;
+        }
+
+        body{
+            background:linear-gradient(135deg,#4facfe,#00f2fe);
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            min-height:100vh;
+        }
+
+        .container{
+            background:#fff;
+            width:500px;
+            padding:30px;
+            border-radius:15px;
+            box-shadow:0 10px 25px rgba(0,0,0,.2);
+        }
+
+        h1{
+            text-align:center;
+            margin-bottom:10px;
+        }
+
+        p{
+            text-align:center;
+            margin-bottom:25px;
+            color:gray;
+        }
+
+        label{
+            display:block;
+            margin-top:15px;
+            margin-bottom:5px;
+            font-weight:bold;
+        }
+
+        input{
+            width:100%;
+            padding:10px;
+            border-radius:8px;
+            border:1px solid #ccc;
+        }
+
+        button{
+            width:100%;
+            margin-top:25px;
+            padding:12px;
+            border:none;
+            background:#2196F3;
+            color:white;
+            font-size:18px;
+            border-radius:8px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#1976D2;
+        }
+
+        .result{
+            margin-top:25px;
+            padding:15px;
+            background:#e8f5e9;
+            color:#2e7d32;
+            text-align:center;
+            border-radius:10px;
+            font-size:20px;
+            font-weight:bold;
+        }
+
+        .footer{
+            margin-top:20px;
+            text-align:center;
+            color:gray;
+            font-size:14px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Adult Income Prediction</h1>
+
+    <p>Predict whether annual income is greater than $50K</p>
+
+    <form action="/predict" method="POST">
+
+        <label>Age</label>
+        <input type="number" name="age" required>
+
+        <label>Education Number</label>
+        <input type="number" name="education_num" required>
+
+        <label>Hours Per Week</label>
+        <input type="number" name="hours_per_week" required>
+
+        <label>Capital Gain</label>
+        <input type="number" name="capital_gain" required>
+
+        <label>Capital Loss</label>
+        <input type="number" name="capital_loss" required>
+
+        <button type="submit">Predict Income</button>
+
+    </form>
+
+    {% if prediction_text %}
+    <div class="result">
+        {{ prediction_text }}
+    </div>
+    {% endif %}
+
+    <div class="footer">
+        Logistic Regression | Flask | Scikit-Learn
+    </div>
+
+</div>
+
+</body>
+</html>
